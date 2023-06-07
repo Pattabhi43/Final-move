@@ -31,7 +31,7 @@ jobs:
           
       - name: TF cloud login
         run: |
-          terraform login '${{ env.TF_API_TOKEN }}'
+          terraform login $TF_API_TOKEN
         
       - name: Terraform initialise
         run: terraform init
