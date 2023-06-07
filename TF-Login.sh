@@ -3,7 +3,7 @@
 # Set your Terraform Cloud organization and login credentials
 ORG_NAME="AWS_prk"
 EMAIL="kpramaiah46@gmail.com"
-TOKEN="DVCcyOlNRWOZHw.atlasv1.NH23svnjZP1migPghaNdfxlsdUPkRqDu3ioeOtyIZf2c36dBBexTFhVfq7ej5uGmQDE"
+TOKEN="52x68BR5sYgfiA.atlasv1.b9AZDUCOULTPOgr81dqFGIjrlp3zO2zdUkcrgvD6PLs4f04ja8bnKNYy9q2lU1SaLCw"
 
 # Configure Terraform CLI to use Terraform Cloud
 terraform login $TOKEN
