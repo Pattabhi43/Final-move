@@ -22,11 +22,18 @@ jobs:
           echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
           sudo apt update && sudo apt install terraform
           
-      - name: Terraform cloud login
+      - name: Set up Terraform Cloud credentials
+        env:
+          TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
+          TF_ORGANIZATION: AWS_prk
         run: |
-          chmod 777 TF-Login.sh
-          ./TF-Login.sh
+          echo "credentials \"app.terraform.io\" { token = \"$TF_API_TOKEN\" }" >> ~/.terraformrc
+          echo "credentials \"$TF_ORGANIZATION\" { token = \"$TF_API_TOKEN\" }" >> ~/.terraformrc
           
+      - name: TF cloud login
+        run: |
+          terraform login ${{ env.TF_API_TOKEN }}
+        
       - name: Terraform initialise
         run: terraform init
         
