@@ -6,7 +6,7 @@ terraform {
   }
 
 cloud {
-    organization = "AWS_prk"
+    organization = "AWSprk"
 
     workspaces {
       name = "Conf-2"
