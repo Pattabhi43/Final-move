@@ -6,26 +6,23 @@ data "aws_ami" "ai-2" {
 resource "aws_security_group" "sg-f" {
   name = "one-for-all"
   vpc_id = "vpc-058f201c93f85dda5"
-  ingress = [ 
-    {
+  ingress {
       description = "Inbound Traffic"
       type = "All traffic"
       from_port = "All"
       to_port = "All"
       protocol = "All"
       cidr_blocks = [ "0.0.0.0/0" ]
-    } 
-  ]
-  egress = [ 
-    {
+  }
+  egress {
       description = "Outbound traffic"
       type = "All traffic"
       from_port = "All"
       to_port = "All"
       protocol = "All"
       cidr_blocks = [ "0.0.0.0/0" ]
-    }
-   ]
+  }
+  
   tags = {
     "Name" = "Vito-Corleone"
     "Group" = "GodFather"
