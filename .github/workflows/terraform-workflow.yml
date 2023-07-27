@@ -25,14 +25,12 @@ jobs:
       - name: Set up Terraform Cloud credentials
         env:
           TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
-          TF_ORGANIZATION: AWS_prk
+          TF_ORGANIZATION: AWSprk
         run: |
-          echo "credentials \"app.terraform.io\" { token = \"$TF_API_TOKEN\" }" >> ~/.terraformrc
-          echo "credentials \"$TF_ORGANIZATION\" { token = \"$TF_API_TOKEN\" }" >> ~/.terraformrc
+          echo "credentials \"app.terraform.io\" { token = \${{ secrets.TF_API_TOKEN }} }" >> ~/.terraformrc
           
       - name: TF cloud login
-        run: |
-          terraform login ${{ env.TF_API_TOKEN }}
+        run: terraform login
         
       - name: Terraform initialise
         run: terraform init
