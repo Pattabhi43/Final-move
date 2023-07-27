@@ -1,19 +1,12 @@
 terraform {
-  required_providers {
-    tfe = {
-      version = "~> 0.44.0"
-    }
-  }
-
-cloud {
+  backend "remote" {
     organization = "AWSprk"
 
     workspaces {
-      name = "Conf-2"
+      name = "Final-move"
     }
   }
 }
-
 
 variable "AWS_ACCESS_KEY" {
   description = "aws access key"
