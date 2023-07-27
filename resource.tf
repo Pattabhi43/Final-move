@@ -8,7 +8,6 @@ resource "aws_security_group" "sg-f" {
   vpc_id = "vpc-058f201c93f85dda5"
   ingress {
       description = "Inbound Traffic"
-      type = "All traffic"
       from_port = "All"
       to_port = "All"
       protocol = "All"
@@ -16,7 +15,6 @@ resource "aws_security_group" "sg-f" {
   }
   egress {
       description = "Outbound traffic"
-      type = "All traffic"
       from_port = "All"
       to_port = "All"
       protocol = "All"
