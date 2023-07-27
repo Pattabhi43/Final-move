@@ -1,39 +1,8 @@
-data "aws_ami" "ai-2" {
-  owners = ["137112412989"]
-  most_recent = true
-}
-
-resource "aws_security_group" "sg-f" {
-  name = "one-for-all"
-  vpc_id = "vpc-058f201c93f85dda5"
-  ingress {
-      description = "Inbound Traffic"
-      from_port = 0
-      to_port = 0
-      protocol = "All"
-      cidr_blocks = [ "0.0.0.0/0" ]
-  }
-  egress {
-      description = "Outbound traffic"
-      from_port = 0
-      to_port = 0
-      protocol = "All"
-      cidr_blocks = [ "0.0.0.0/0" ]
-  }
-  
+resource "aws_instance" "slaves" {
+  ami = "ami-03cb1380eec7cc118"
+  instance_type = "t2.micro"
+  aws
   tags = {
-    "Name" = "Vito-Corleone"
-    "Group" = "GodFather"
+    "Name" = "Slave-1"
   }
-}
-
-resource "aws_instance" "lmaster" {
-    ami = data.aws_ami.ai-2.id
-    instance_type = "t2.micro"
-    vpc_security_group_ids = [aws_security_group.sg-f.id]
-    tags = {
-      "Name" = "Don-Corleone"
-      "Group" = "GodFather"
-    }
-    user_data = file("Userdata.sh")
 }
