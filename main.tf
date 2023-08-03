@@ -16,12 +16,12 @@ variable "AWS_SECRET_KEY_ID" {
   description = "aws secret key"
 }
 
-variable "API-token" {
+variable "API_TOKEN" {
   description = "api token tf cloud"
 }
 
 provider "tfe" {
-  token = var.API-token
+  token = var.API_TOKEN
 }
 
 provider "aws" {
