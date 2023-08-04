@@ -1,7 +1,14 @@
-resource "aws_instance" "slaves" {
-  ami = "ami-03cb1380eec7cc118"
-  instance_type = "t2.micro"
-  tags = {
-    "Name" = "Slave-1"
-  }
+data "template_file" "user-data" {
+  template = file("Userdata.sh")
+}
+
+resource "aws_instance" "bishops" {
+    ami = var.ami
+    instance_type = var.type
+    count = 2
+    key_name = var.key
+    user_data = data.template_file.user-data.rendered
+    tags = {
+        "Name" = "2-Bishops"
+    }
 }
